@@ -39,12 +39,14 @@ describe('GET /api/getPosts', function () {
       var post2 = new Post({name: 'Mayank', title: 'Hi Apoc', content: "All dogs bark 'apoc!'"});
       
       Post.create([post1, post2], function (err, saved) {
+        console.log("BEFORE GetPosts");
         done();
       });
     });
   });
 
   afterEach(function (done) {
+    console.log("AFTER afterGetPosts");
     dropDB(done);
   });
 
@@ -55,6 +57,10 @@ describe('GET /api/getPosts', function () {
       .set('Accept', 'application/json')
       .end(function (err, res) {
         Post.find().exec(function (err, posts) {
+          console.log(posts);
+          console.log(posts.length);
+          console.log(res.body.posts);
+          console.log(res.body.posts.length);
           expect(posts.length).to.equal(res.body.posts.length);
           done();
         });

@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { connect } from 'react-redux';
 import * as Actions from '../../redux/actions/actions';
+import NavBar from '../../components/Header/NavBar';
 
 class PostContainer extends Component {
   constructor(props, context) {
@@ -40,6 +41,7 @@ class PostContainer extends Component {
   render() {
     return (
       <div>
+      <NavBar />
         <Header onClick={this.handleClick} />
         <div className="container">
           <PostCreateView addPost={this.add}
